@@ -28,10 +28,10 @@ trait BootstrapScreen extends LiftScreen {
     } andThen
     "span" #> { n:NodeSeq =>
       val e = elem(n)
-      println("checking " + e + " -> " + (e $ """input[type="radio"]"""))
+      println("checking radio " + e + " -> " + (e $ """input[type="radio"]"""))
       e $ """input[type="radio"]""" match {
         case Nil => e
-        case l => <div class="radio"><label>{l}</label>{e.descendant.filter(_.isAtom)}</div>
+        case l => <div class="radio"><label>{l}{e.descendant.filter(_.isAtom)}</label></div>
       }
     } andThen
     ".label [class]" #> ""
